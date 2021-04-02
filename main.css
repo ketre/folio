@@ -41,7 +41,7 @@ body {
     transition: color  1s, font-size 1s
 }
 .italic:hover{
-color: white;
+color: whitesmoke;
 font-style: italic;
 font-size: 2em;
 }
