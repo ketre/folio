@@ -1,4 +1,2 @@
-const CircleType = require('circletype')
 
-
-
+new CircleType(document.getElementById('nametag'));
