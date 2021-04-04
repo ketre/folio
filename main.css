@@ -16,9 +16,12 @@
 ::selection {
     background: #ffb7b7;
 }
-
+a {
+    color: inherit;
+    text-decoration: none;
+  }
 body {
-    margin-top: 1em;
+    margin: 0;
     font-family: 'Helvetica';
     color: whitesmoke;
     background: #493840;
@@ -27,27 +30,36 @@ body {
 }
 
 .header {
-    display: grid;
-    grid-template-columns: auto 1fr 1fr 1fr auto;
-    font-size: 1.15em;
-    /* padding: 1em; */
+    display: flex;
+    flex-flow: row wrap;
+    /* grid-template-columns: repeat(2, 1fr) minmax(80vmin, 1fr) repeat(2, 1fr); */
+    font-family: 'Helvetica Neue';
+    font-size: 1.3em;
+    border: 1px solid #ece6e6;
 }
 
 .left-side {
-    font-family: 'CircularXXWebTrial-BookTrial';
-    padding-top: 2em;
-    padding-left: 2vw;
-    text-align: left;
-    border-bottom: 1px solid red;
-}
+    flex-grow: 1;
+   margin: 0;
+    padding: 2vw 0px;
+    border-right: 1px solid #ece6e6;
 
+}
+.center{
+    min-width: 340px;
+    flex-grow: 1;
+    font-family: 'Helvetica Neue' !important;
+    color: whitesmoke !important;
+    /* background: #B29393; */
+    font-size: 1.25em !important;
+    margin: 0;
+    padding: 2vw 0px;
+}
 .right-side {
-    font-family: 'Proxima Nova';
-    font-weight: 900;
-    border-bottom: 1px solid red;
-    padding-top: 2em;
-    padding-right: 2vw;
-    text-align: right;
+    flex-grow: 1;
+    margin: 0;
+    padding: 2vw 0px;
+    border-left: 1px solid #ece6e6;
 }
 
 #main {
@@ -57,9 +69,27 @@ body {
     /* grid: "a" 1fr "b" 1fr "c" 1fr "d" 1fr ; */
 }
 
+.info{
+    font-size: 1.3em;
+    line-height: 1.6;
+    text-align: left;
+    display: flex;
+    flex-wrap: wrap;
+    padding:5vw;
+    border: 1px solid whitesmoke;
+    
+}
+.aboutme{
+    width: 60%;
+min-width: 310px;
+}
+ .links{
+     padding-right: 5vw;
+} 
+
 #nametag {
-    font-size: 1.6em imp !important
-    /* grid-area: a; */
+    padding: 1em;
+    font-size: 1.6em imp !important;
     z-index: 89;
 }
 
@@ -93,6 +123,12 @@ body {
     background-color: rgb(104, 55, 55);
     border-radius: 50%;
     animation: bounce-top 2s linear both;
+}
+.selected{
+    font-family: 'Schnyder L Demi';
+    background-color: #B29393;
+    font-size: 2em;
+    color: red;
 }
 
 @keyframes bounce-top {
