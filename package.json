@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "20ful": "^0.2.8",
     "circletype": "^2.3.0"
   }
 }

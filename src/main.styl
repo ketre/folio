@@ -20,14 +20,25 @@ a {
     color: inherit;
     text-decoration: none;
   }
-body {
-    margin: 0;
-    font-family: 'Helvetica';
-    color: whitesmoke;
-    background: #493840;
-    text-align: center;
-    height: 100vh;
-}
+
+body
+	margin: 0;
+	font-family: 'Helvetica';
+	color: whitesmoke;
+	background: #493840;
+	text-align: center;
+	height: 100vh;
+	display: grid;
+	grid: "n n n n n" auto\
+		"a b c d e" 1fr\
+		"aside main main main main" 5fr / 1fr 1fr 1fr 1fr 1fr
+	> *
+		padding 1ex
+		border thin solid Yellow
+
+
+#nametag
+	grid-area n
 
 .header {
     display: flex;
@@ -38,13 +49,21 @@ body {
     border: 1px solid #ece6e6;
 }
 
-.left-side {
-    flex-grow: 1;
-   margin: 0;
-    padding: 2vw 0px;
-    border-right: 1px solid #ece6e6;
+.a
+	grid-area a
+	// margin: 0;
+	// padding: 2vw 0px;
+	// border-right: 1px solid #ece6e6;
 
-}
+.b
+	grid-area b
+.c
+	grid-area c
+.d
+	grid-area d
+.e
+	grid-area e
+
 .center{
     min-width: 340px;
     flex-grow: 1;
@@ -77,21 +96,20 @@ body {
     flex-wrap: wrap;
     padding:5vw;
     border: 1px solid whitesmoke;
-    
 }
-.aboutme{
-    width: 60%;
-min-width: 310px;
-}
- .links{
-     padding-right: 5vw;
-} 
 
-#nametag {
-    padding: 1em;
-    font-size: 1.6em imp !important;
-    z-index: 89;
-}
+.aboutme
+	grid-area main
+
+.links
+	grid-area aside
+
+
+// #nametag {
+//     padding: 1em;
+//     font-size: 1.6em imp !important;
+//     z-index: 89;
+// }
 
 #stuff, #books, #texts {
     font-family: 'Schnyder L Demi';
@@ -167,8 +185,11 @@ min-width: 310px;
     }
 }
 
-@media only screen and (max-width: 812px) and (max-height:375px) {
-    #main {
-        grid-template-columns: 1fr 1fr 1fr;
-    }
-}
+@media only screen and (max-width: 414px)
+	body
+		grid: "n n n n n" auto\
+			"a b c d e" 1fr\
+			"aside main main main main" 5fr / 0 0 0 1fr 0
+
+	.a,.b,.c,.e
+		display none
