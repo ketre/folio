@@ -20,6 +20,9 @@ a {
     color: inherit;
     text-decoration: none;
   }
+  a:hover{
+    color: #ffb7b7;
+  }
 body {
     margin: 0;
     font-family: 'Helvetica';
@@ -31,17 +34,31 @@ body {
   grid: "n n n n n" auto "a b c d e" 0.7fr "aside main main main empty" 5fr/1fr 1fr 1fr 1fr 1fr;
 }
 body > * {
+  font-size: 2.3vh;
     padding: 2ex;
     margin: 0;
     border: thin solid #ece6e6;;
   }
-
+.mainpage{
+  grid-area:n;
+  z-index: 6;
+  margin: auto;
+  padding: 2em;
+  border: hidden;
+}
 #nametag {
 z-index: -5; 
 grid-area: n;
+padding: 1em;
+font-size: 2vh; 
+z-index: 5;
   } 
   .a, .b, .c, .d, .e{
-  padding-top: 2.5vw; }
+  padding-top: 2.5vw; 
+    font-family: 'Schnyder L Demi';
+    color:red;
+    font-size: 1.6em
+}
  
   .a {
     grid-area: a;
@@ -72,21 +89,15 @@ grid-area: n;
      grid-area: aside;
      padding-top:5vw;
      padding-right: 3vw;
-} 
-
-#nametag {
-    padding: 1em;
-    font-size: 1.6em imp !important;
-    z-index: 89;
 }
 
 #stuff, #books, #texts {
     font-family: 'Schnyder L Demi';
     text-align: center;
-    line-height: 3;
+    line-height: 2.2;
     font-size: 3em;
     font-weight: 50;
-    color: red;
+    color: whitesmoke;
     transition: color 2s;
     z-index: 80;
 }
@@ -96,7 +107,7 @@ grid-area: n;
 }
 
 .italic:hover {
-    color: whitesmoke;
+    color: red;
     font-style: italic;
     font-size: 2em;
 }
@@ -122,7 +133,9 @@ grid-area: n;
     padding-top: 3vh;
     color: red;
 }
-
+#menuToggle{
+  display: none;
+}
 @keyframes bounce-top {
     0% {
         transform: translateY(-100vh);
@@ -162,7 +175,7 @@ grid-area: n;
 @media only screen and (max-width: 414px) {
     body {
       grid: "n n n n n" auto 
-            "s s s s s" 1fr 
+            "s s s s s" 1fr
             "aside empty empty empty empty"
             "main main main main main" 5fr/0 0 0 1fr 0;
     }
@@ -182,85 +195,64 @@ grid-area: n;
     .links {
       border: none;
     }
-    #sandwich {
-      padding-top: 2rem;
-    /* justify-self: right; */
-      position: fixed;
-      z-index: 40;
-      right: 0;
-      top: 0;
-    }
-    #sandwich a {
-      text-decoration: none;
-    }
-    #sandwich > span {
-      z-index: 40;
-      font-family: Helvetica;
-      font-size: 3.5rem;
-      font-weight: lighter;
-    /* padding-right: 2rem; */
-      line-height: 20%;
-      top: 1rem;
-      right: 1rem;
-      position: absolute;
-      transition: color 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
-    }
-    #sandwich input[type=checkbox] {
-    /* invisible checkbox */
-      opacity: 0;
-      z-index: 50;
-      position: absolute;
-      top: 1rem;
-      right: 2rem;
-      cursor: pointer;
-      width: 3rem;
-      height: 6ex;
-    }
-    #sandwich input[type=checkbox]:checked ~ #foldout {
-      transform: none;
-    }
-    #sandwich input[type=checkbox]:checked ~ span {
-      color: #a39a7c;
-    }
-    #foldout {
-      position: absolute;
-      top: 0;
-      width: 40em;
-      height: 100vh;
-      right: -100%;
-      padding-top: 8em;
-      color: #000;
-      background: #f7f5ef;
-      -webkit-font-smoothing: antialiased;
-      transform-origin: top right;
-      transform: translate(100%, 0);
-      transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
-    }
-    #foldout li {
-      list-style-type: none;
-      padding-top: 1em;
-      padding-right: 2em;
-      font-size: 1.5rem;
-      font-family: 'MAK';
-      font-weight: bolder;
-      text-align: right;
-    }
-    #foldout ol.num>li {
-      font-family: 'GT America Expanded Regular';
-      color: transparent;
-      -webkit-text-stroke: 0.5px #000;
-      font-weight: normal;
-      font-size: 2em;
-      padding: 0em;
-      line-height: normal;
-    }
-    #foldout .links>div {
-      text-align: right;
-      font-family: 'MAK';
-      padding-right: 3em;
-      font-size: 1rem;
-      padding-top: 2em;
-    }
-  }
-
   
+#menuToggle
+{
+  grid-area: s;
+  display: block;
+  position: relative;
+  z-index: 10; 
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+#menuToggle a
+{
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+#menuToggle input
+{
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;  
+  cursor: pointer;
+  opacity: 0; 
+   z-index: 20; 
+  -webkit-touch-callout: none;
+} 
+#menu
+{
+  display: block;
+  position: absolute;
+  width: 30%;
+  height: 812px;
+  margin-left: -50px;
+  padding: 50px;
+  background: #B29393;
+  list-style-type: none;
+  -webkit-font-smoothing: antialiased;
+  /* to stop flickering of text in safari */
+  transform-origin: 0% 0%;
+  transform: translate(-100%, 0);
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+}
+
+#menu li
+{
+  font-family: 'Schnyder L Demi';
+  color: red;
+  padding: 10px 0;
+  font-size: 2em;
+}
+
+/*
+ * And let's slide it in from the left
+ */
+#menuToggle input:checked ~ ul
+{
+  transform: none;
+}
+}
